@@ -289,7 +289,9 @@ int Compiler::AllocInst(int n) {
     if (inst_len_ > 0) {
       memmove(ip, inst_, inst_len_ * sizeof ip[0]);
     }
-    memset(ip + inst_len_, 0, (inst_cap_ - inst_len_) * sizeof ip[0]);
+
+    inst_len_ = {};
+
     delete[] inst_;
     inst_ = ip;
   }
